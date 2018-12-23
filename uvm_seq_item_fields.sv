@@ -25,6 +25,8 @@ module tb ;
 
     rand bit [3:0] id;
     rand bit [7:0] len ;
+    realtime  elapsedtime ;
+    time  time64 ;
     rand checksum_t checksum;
     event  interrupt ;
 
@@ -33,8 +35,8 @@ module tb ;
     dest_field   dest ;
 
     `uvm_object_utils_begin(my_pkt)
-  	  `uvm_field_int(id,UVM_ALL_ON)
-      `uvm_field_int(len,UVM_ALL_ON + UVM_BIN)
+  	  `uvm_field_int(id,UVM_ALL_ON + UVM_BIN)
+      `uvm_field_int(len,UVM_ALL_ON)
       `uvm_field_object(dest,UVM_ALL_ON)
       `uvm_field_enum(checksum_t, checksum, UVM_ALL_ON)
       `uvm_field_event(interrupt,UVM_ALL_ON + UVM_NOPRINT)
